@@ -30,13 +30,14 @@
 	$.fn.toodles.defaults =
 	{
 		selector: '',
-		class: 'active',
+		active: 'active',
+		inactive: '',
 
-		enter: 'mouseenter',
+		enter: 'click',
 		enterDelay: 0,
-		enterHandler: 'addClass',
+		enterHandler: 'toggleClass',
 
-		leave: 'mouseleave',
+		leave: '',
 		leaveDelay: 0,
 		leaveHandler: 'removeClass'
 	};
@@ -79,14 +80,22 @@
 	//
 	$.fn.toodles.handlers =
 	{
+		toggleClass: function(data)
+		{
+			if (data.inactive) data.element.toggleClass(data.inactive);
+			if (data.active) data.element.toggleClass(data.active);
+		},
+
 		addClass : function(data)
 		{
-			data.element.addClass(data.class);
+			if (data.inactive) data.element.removeClass(data.inactive);
+			if (data.active) data.element.addClass(data.active);
 		},
 
 		removeClass : function(data)
 		{
-			data.element.removeClass(data.class);
+			if (data.inactive) data.element.addClass(data.inactive);
+			if (data.active) data.element.removeClass(data.active);
 		}
 	}
 

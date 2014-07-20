@@ -4,6 +4,6 @@
 	"main": "jquery.toodles.js",
 	"ignore": [],
 	"dependencies": {
-		"jquery": ">=1.10.2",
+		"jquery": ">=1.10.2"
 	}
 }

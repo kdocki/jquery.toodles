@@ -57,4 +57,4 @@ You can pass other options using `data-<option name>` and here are the defaults 
 	};
 ```
 
-Here is an [example plunkr](http://plnkr.co/edit/EwA8S0Exxcy6Z53KFdFZ?p=preview) of customizing jquery.toodles and animate.css to make things animate when you hover over them. You can get pretty creative with data-toodles, but it is worth noting that if you end up having something more complex than adding classes to elements then it is probably just time to write your own custom jQuery handler.
+Here is an [example plunkr](http://plnkr.co/edit/CcqkkUHsfFMJXBQZSNdG) of customizing jquery.toodles and animate.css to make things animate when you hover over them. You can get pretty creative with data-toodles, but it is worth noting that if you end up having something more complex than adding classes to elements then it is probably just time to write your own custom jQuery handler.

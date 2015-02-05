@@ -12,13 +12,24 @@
 (function($)
 {
 	//
+	// this is used for event delegation
+	//
+	var allEvents = "abort blur click dblclick focus focusin focusout input keydown keyup load mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup resize scroll select unload wheel";
+
+	//
 	// setup toodles jQuery plugin
 	//
-	$.fn.toodles = function(options)
+	$.fn.toodles = function(options, delegation)
 	{
 		var settings = $.extend( {}, $.fn.toodles.defaults, options );
 
-		return this.each(function(index, element) { ohToodles($(element), settings); });
+		if (typeof delegation === 'undefined') {
+			return this.each(function(index, element) { ohToodles($(element), settings); });
+		}
+
+		delegation = typeof delegation === 'string' ? $(delegation) : delegation;
+
+		ohDelegatedToodles(this.selector, settings, delegation);
 	};
 
 	//
@@ -71,6 +82,31 @@
 				setTimeout(function() { $.fn.toodles.handlers[data.leaveHandler](data); }, data.leaveDelay);
 			});
 		}
+	}
+
+	//
+	// sometimes you'll want to delegate toodles to a parent
+	// element so you don't have to reinitialize toodles over
+	// and over, this is useful when you are removing elements
+	// out of the DOM (say for ajax or templating)
+	//
+	function ohDelegatedToodles(selector, settings, delegation)
+	{
+		delegation.on(allEvents, selector, function(event)
+		{
+			var element = $(event.currentTarget);
+			var data = extractData(element, settings);
+
+			if (data.enter == event.type)
+			{
+				return setTimeout(function() { $.fn.toodles.handlers[data.enterHandler](data); }, data.enterDelay);
+			}
+
+			if (data.leave == event.type)
+			{
+				return setTimeout(function() { $.fn.toodles.handlers[data.leaveHandler](data); }, data.leaveDelay);
+			}
+		});
 	}
 
 	//

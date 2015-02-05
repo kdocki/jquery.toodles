@@ -58,3 +58,11 @@ You can pass other options using `data-<option name>` and here are the defaults 
 ```
 
 Here is an [example plunkr](http://plnkr.co/edit/CcqkkUHsfFMJXBQZSNdG) of customizing jquery.toodles and animate.css to make things animate when you hover over them. You can get pretty creative with data-toodles, but it is worth noting that if you end up having something more complex than adding classes to elements then it is probably just time to write your own custom jQuery handler.
+
+## Event delegation
+
+Sometimes you have a lot of moving parts on your page. You may be using a framework or rolling your own and there are DOM elements flying every which way. To keep from having to bind the toodles jquery plugin over and over each time an element is removed / re-added you can use event delegation and bind toodles to the parent. All you have to do is pass a second parameter to toodles when initializing the plugin.
+
+```
+$('[data-toodles=""]').toodles(options, 'body');
+```

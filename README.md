@@ -41,20 +41,20 @@ You can pass data options to any data-toodles command to inject in your own cust
 You can pass other options using `data-<option name>` and here are the defaults that toodles comes with out of the box. You are also change these when you initialize your toodles after the body has loaded.
 
 ```
-	$.fn.toodles.defaults =
-	{
-		selector: '',
-		active: 'active',
-		inactive: '',
+$.fn.toodles.defaults =
+{
+	selector: '',
+	active: 'active',
+	inactive: '',
 
-		enter: 'click',
-		enterDelay: 0,
-		enterHandler: 'toggleClass',
+	enter: 'click',
+	enterDelay: 0,
+	enterHandler: 'toggleClass',
 
-		leave: '',
-		leaveDelay: 0,
-		leaveHandler: 'removeClass'
-	};
+	leave: '',
+	leaveDelay: 0,
+	leaveHandler: 'removeClass'
+};
 ```
 
 Here is an [example plunkr](http://plnkr.co/edit/CcqkkUHsfFMJXBQZSNdG) of customizing jquery.toodles and animate.css to make things animate when you hover over them. You can get pretty creative with data-toodles, but it is worth noting that if you end up having something more complex than adding classes to elements then it is probably just time to write your own custom jQuery handler.
